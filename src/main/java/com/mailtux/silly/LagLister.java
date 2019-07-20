@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class LagLister {
 
-    public void lagLister(){
+    public Map<Integer, List<Linje>>  lagLister(){
         List<Linje> linjer=new ArrayList<Linje>();
         for (int i=0;i<=9999;i++){
             linjer.add(new Linje(i));
@@ -15,6 +15,6 @@ public class LagLister {
         Map<Integer, List<Linje>> result =
                 linjer.stream().collect(Collectors.groupingBy(Linje::getSum));
 
-        System.out.println();
+        return result;
     }
 }
