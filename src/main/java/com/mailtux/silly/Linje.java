@@ -2,12 +2,12 @@ package com.mailtux.silly;
 
 public class Linje {
 
-    private int l1;
-    private int l2;
-    private int l3;
-    private int l4;
-    private int sum;
-    private int l;
+    public int l1;
+    public int l2;
+    public int l3;
+    public int l4;
+    public int sum;
+    public int l;
 
     public Linje(int l) {
         this.l=l;
@@ -25,30 +25,7 @@ public class Linje {
 
     }
 
-    public int getL1() {
-        return l1;
-    }
-
-    public int getL2() {
-        return l2;
-    }
-
-    public int getL3() {
-        return l3;
-    }
-
-    public int getL4() {
-        return l4;
-    }
-
     public int getSum() {
         return sum;
     }
-
-    public int getL() {
-        return l;
-    }
-
-
-
 }

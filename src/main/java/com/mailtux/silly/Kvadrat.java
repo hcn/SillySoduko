@@ -11,11 +11,6 @@ public class Kvadrat {
         this.andre=andre;
         this.tredje=tredje;
         this.fjerde=fjerde;
-
-
-
-
-
     }
 
     public Linje getFørste() {
@@ -36,6 +31,42 @@ public class Kvadrat {
 
     public String toString(){
         return første.toString()+"\n"+ andre.toString()+"\n"+tredje.toString()+"\n"+fjerde.toString();
+
+    }
+
+    public boolean sjekk() {
+       // Linje første = kvadrat.getFørste();
+     //   Linje andre = kvadrat.getAndre();
+      //  Linje tredje = kvadrat.getTredje();
+        //  Linje fjerde = kvadrat.getFjerde();
+
+
+        int sum = første.getSum();
+        if ((første.l1 + andre.l1 + tredje.l1 + fjerde.l1) != sum) {
+            return false;
+        }
+
+        if ((første.l2 + andre.l2 + tredje.l2 + fjerde.l2) != sum) {
+            return false;
+        }
+
+        if ((første.l3 + andre.l3 + tredje.l3 + fjerde.l3) != sum) {
+            return false;
+        }
+
+        if ((første.l4 + andre.l4 + tredje.l4 + fjerde.l4) != sum) {
+            return false;
+        }
+
+        if ((første.l1 + andre.l2 + tredje.l3 + fjerde.l4) != sum) {
+            return false;
+        }
+
+        if ((første.l4 + andre.l3 + tredje.l2 + fjerde.l1) != sum) {
+            return false;
+        }
+
+        return true;
 
     }
 }

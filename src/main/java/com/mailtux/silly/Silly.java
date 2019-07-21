@@ -17,78 +17,59 @@ public class Silly {
 
         Map<Integer, List<Linje>> lister = new LagLister().lagLister();
 
-          for (int i=0;i<lister.size();i++) {
-              Long start=System.nanoTime();
-              List<Linje> linjer = lister.get(i);
-              System.out.println("Nummer "+i+" "+linjer.size());
+        for (int i = 2; i < 3; i++) {
+            Long start = System.nanoTime();
+            List<Linje> linjer = lister.get(i);
+            System.out.println("Nummer " + i + " " + linjer.size());
 
-              lagKvadrater(linjer);
-              System.out.println((System.nanoTime() - start)/1000000000);
-          }
+            lagKvadrater(linjer);
+            System.out.println((System.nanoTime() - start) / 1000000000.0);
+        }
 
     }
 
-    private void lagKvadrater(List<Linje> linjer) {
+    public long lagKvadrater(List<Linje> linjer) {
 
-        List<Kvadrat> kvadrater = new ArrayList<>();
+        Teller antallOk = new Teller();
         linjer.stream().forEach(x -> {
             linjer.stream().forEach(y -> {
                 linjer.stream().forEach(z -> {
                     linjer.stream().forEach(w -> {
-                        kvadrater.add(new Kvadrat(x, y, z, w));
-
+                        if (sjekk(x,y,z,w)) {
+                            antallOk.add();
+                        }
                     });
-
                 });
             });
-
-
         });
-
-        System.out.println("Antall mulige: "+kvadrater.size());
-             List<Kvadrat> riktige=new ArrayList<>();
-        AtomicLong antall = new AtomicLong();
-        kvadrater.stream().forEach(x -> {
-            if (sjekk(x)) {
-                antall.incrementAndGet();
-                riktige.add(x) ;
-            }
-
-
-        });
-        System.out.println("Antall riktige: "+riktige.size());
+        System.out.println("Antall riktige: " + antallOk.get());
+        return antallOk.get();
 
     }
 
-    private boolean sjekk(Kvadrat kvadrat) {
-        Linje første = kvadrat.getFørste();
-        Linje andre = kvadrat.getAndre();
-        Linje tredje = kvadrat.getTredje();
-        Linje fjerde = kvadrat.getFjerde();
-
-
-        int sum = første.getSum();
-        if ((første.getL1() + andre.getL1() + tredje.getL1() + fjerde.getL1()) != sum) {
+    private static boolean sjekk(Linje første,Linje andre, Linje tredje,Linje fjerde) {
+        int sum = første.sum;
+        if ((første.l1+ andre.l1 + tredje.l1 + fjerde.l1) != sum) {
             return false;
         }
 
-        if ((første.getL2() + andre.getL2() + tredje.getL2() + fjerde.getL2()) != sum) {
+        if ((første.l2 + andre.l2+ tredje.l2 + fjerde.l2) != sum) {
             return false;
         }
 
-        if ((første.getL3() + andre.getL3() + tredje.getL3() + fjerde.getL3()) != sum) {
+        if ((første.l3 + andre.l3 + tredje.l3 + fjerde.l3) != sum) {
             return false;
         }
 
-        if ((første.getL4() + andre.getL4() + tredje.getL4() + fjerde.getL4()) != sum) {
+        if ((første.l4 + andre.l4 + tredje.l3 + fjerde.l4) != sum) {
             return false;
         }
 
-        if ((første.getL1() + andre.getL2() + tredje.getL3() + fjerde.getL4()) != sum) {
+        if ((første.l1 + andre.l2 + tredje.l3 + fjerde.l4) != sum) {
             return false;
         }
 
-        if ((første.getL4() + andre.getL3() + tredje.getL2() + fjerde.getL1()) != sum) {
+        if ((første.l4 + andre.l3 + tredje.l2 + fjerde.l1) != sum) {
             return false;
         }
 
