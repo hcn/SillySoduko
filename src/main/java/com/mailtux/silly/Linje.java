@@ -21,11 +21,15 @@ public class Linje {
     }
 
     public String toString() {
-        return sum+": "+l4+" "+l3+" "+l2+" "+l1;
+        return sum+": "+l1+" "+l2+" "+l3+" "+l4;
 
     }
 
     public int getSum() {
         return sum;
+    }
+
+    public int getForste() {
+        return l1;
     }
 }

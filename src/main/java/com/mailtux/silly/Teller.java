@@ -2,7 +2,7 @@ package com.mailtux.silly;
 
 public class Teller {
 
-    int ant;
+    long ant;
     public Teller(){
         this.ant=0;
     }
@@ -11,7 +11,7 @@ public class Teller {
         this.ant++;
     }
 
-    public int get(){
+    public long get(){
        return ant;
     }
 }

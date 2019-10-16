@@ -6,23 +6,26 @@ import org.junit.Test;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-public class SillyTest {
+public class SillyToTest {
 
     private static Map<Integer, List<Linje>> map;
+    private static Map<LagIndekserteLister.ListeIndex, List<Linje>> indeksertMap;
 
     @BeforeClass
     public static void before(){
         Map<Integer, List<Linje>> map = new LagLister().lagLister();
-        SillyTest.map=map;
+        Map<LagIndekserteLister.ListeIndex, List<Linje>> indeksertMap = new LagIndekserteLister().lagLister();
+        SillyToTest.map=map;
+        SillyToTest.indeksertMap=indeksertMap;
     }
 
     @Test
     public void test0(){
         List<Linje> linjer = map.get(0);
 
-        long l = new Silly().lagKvadrater(0, linjer);
+        long l = new SillyTo().lagKvadrater(0, linjer,indeksertMap);
         assertEquals(1,l);
     }
 
@@ -30,15 +33,15 @@ public class SillyTest {
     public void test1(){
         List<Linje> linjer = map.get(1);
 
-        long l = new Silly().lagKvadrater(1, linjer);
-        assertEquals(4,l);
+        long l = new SillyTo().lagKvadrater(1, linjer,indeksertMap);
+        assertEquals(8,l);
     }
 
     @Test
     public void test2(){
         List<Linje> linjer = map.get(2);
 
-        long l = new Silly().lagKvadrater(2, linjer);
+        long l = new SillyTo().lagKvadrater(2, linjer,indeksertMap);
         assertEquals(48,l);
     }
 
@@ -46,7 +49,7 @@ public class SillyTest {
     public void test3(){
         List<Linje> linjer = map.get(3);
 
-        long l = new Silly().lagKvadrater(3, linjer);
+        long l = new SillyTo().lagKvadrater(3, linjer,indeksertMap);
         assertEquals(200,l);
     }
 
@@ -54,7 +57,7 @@ public class SillyTest {
     public void test4(){
         List<Linje> linjer = map.get(4);
 
-        long l = new Silly().lagKvadrater(4, linjer);
+        long l = new SillyTo().lagKvadrater(4, linjer,indeksertMap);
         assertEquals(675,l);
     }
 
@@ -62,7 +65,7 @@ public class SillyTest {
     public void test5(){
         List<Linje> linjer = map.get(5);
 
-        long l = new Silly().lagKvadrater(5, linjer);
+        long l = new SillyTo().lagKvadrater(5, linjer,indeksertMap);
         assertEquals(1904,l);
     }
 
@@ -70,7 +73,7 @@ public class SillyTest {
     public void test6(){
         List<Linje> linjer = map.get(6);
 
-        long l = new Silly().lagKvadrater(6, linjer);
+        long l = new SillyTo().lagKvadrater(6, linjer,indeksertMap);
         assertEquals(4376,l);
     }
 
@@ -78,7 +81,7 @@ public class SillyTest {
     public void test10(){
         List<Linje> linjer = map.get(10);
 
-        long l = new Silly().lagKvadrater(10, linjer);
+        long l = new SillyTo().lagKvadrater(10, linjer,indeksertMap);
         assertEquals(76976,l);
     }
 
