@@ -78,7 +78,7 @@ public class Silly {
 
         Map<Integer, List<Linje>> lister = new LagLister().lagLister();
 
-        long startTotal = System.nanoTime();
+       // long startTotal = System.nanoTime();
         for (int i = 0; i < lister.size(); i++) {
             Long start = System.nanoTime();
             List<Linje> linjer = lister.get(i);
@@ -89,7 +89,7 @@ public class Silly {
             //    System.out.println("Tid akkumulert: " + (System.nanoTime() - startTotal) / 1000000000.0);
 
         }
-        System.out.println("Totaltid: " + (System.nanoTime() - startTotal) / 1000000000.0);
+     //   System.out.println("Totaltid: " + (System.nanoTime() - startTotal) / 1000000000.0);
 
 
     }
@@ -98,6 +98,8 @@ public class Silly {
 
         Teller antallOk = new Teller();
         Teller antallTestet = new Teller();
+
+     //   long start = System.nanoTime();
 
         linjer.stream().forEach(x -> {
             linjer.stream().forEach(y -> {
@@ -108,13 +110,14 @@ public class Silly {
                             antallTestet.add();
                         } else {
                             antallTestet.add();
-
                         }
                     });
                 });
             });
         });
         System.out.println(i + "\t" + linjer.size() + "\t"+antallTestet.get()+"\t"+antallOk.get());
+      //  System.out.println("Totaltid: " + (System.nanoTime() - start) / 1000000000.0);
+
         return antallOk.get();
 
     }

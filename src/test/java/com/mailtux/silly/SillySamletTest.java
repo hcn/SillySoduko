@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public class SillyToTest {
+public class SillySamletTest {
 
     private static Map<Integer, List<Linje>> map;
     private static Map<LagIndekserteLister.ListeIndex, List<Linje>> indeksertMap;
@@ -17,8 +17,8 @@ public class SillyToTest {
     public static void before(){
         Map<Integer, List<Linje>> map = new LagLister().lagLister();
         Map<LagIndekserteLister.ListeIndex, List<Linje>> indeksertMap = new LagIndekserteLister().lagLister();
-        SillyToTest.map=map;
-        SillyToTest.indeksertMap=indeksertMap;
+        SillySamletTest.map=map;
+        SillySamletTest.indeksertMap=indeksertMap;
     }
 
     @Test
@@ -80,17 +80,37 @@ public class SillyToTest {
     @Test
     public void test10(){
         List<Linje> linjer = map.get(10);
+        doit(linjer,10,76976);
 
-        long l = new SillyTo().lagKvadrater(10, linjer,indeksertMap);
-        assertEquals(76976,l);
     }
 
     @Test
     public void test18(){
         List<Linje> linjer = map.get(18);
 
-        long l = new SillyTo().lagKvadrater(18, linjer,indeksertMap);
-        assertEquals(766736,l);
+        doit(linjer,18,766736);
+
+
+    }
+
+    private void doit(List<Linje> linjer,int antall,int mål) {
+        long startto=System.nanoTime();
+        long lto = new SillyTo().lagKvadrater(antall, linjer,indeksertMap);
+        assertEquals(mål,lto);
+        long sluttto=System.nanoTime();
+
+        long start=System.nanoTime();
+        long l = new Silly().lagKvadrater(antall, linjer);
+        assertEquals(mål,l);
+        long slutt=System.nanoTime();
+
+
+        long tidto=sluttto-startto;
+        long tid=slutt-start;
+        System.out.println("Totaltid to: " + tidto / 1000000000.0);
+        System.out.println("Totaltid   : " + tid / 1000000000.0);
+        System.out.println("Differanse : " + (tid-tidto) / 1000000000.0);
+        System.out.println("Prosent    : " + ((tidto*1.0)/(tid*1.0)) *100);
     }
 
 }

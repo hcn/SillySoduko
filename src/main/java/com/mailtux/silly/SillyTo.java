@@ -59,7 +59,7 @@ public class SillyTo {
         Map<Integer, List<Linje>> lister = new LagLister().lagLister();
         Map<LagIndekserteLister.ListeIndex, List<Linje>> indekserteLister = new LagIndekserteLister().lagLister();
 
-        long startTotal = System.nanoTime();
+       // long startTotal = System.nanoTime();
         for (int i = 0; i < lister.size(); i++) {
             Long start = System.nanoTime();
             List<Linje> linjer = lister.get(i);
@@ -70,7 +70,7 @@ public class SillyTo {
             //    System.out.println("Tid akkumulert: " + (System.nanoTime() - startTotal) / 1000000000.0);
 
         }
-        System.out.println("Totaltid: " + (System.nanoTime() - startTotal) / 1000000000.0);
+     //   System.out.println("Totaltid: " + (System.nanoTime() - startTotal) / 1000000000.0);
 
 
     }
@@ -94,7 +94,6 @@ public class SillyTo {
                                         antallTestet.add();
                                     } else {
                                         antallTestet.add();
-
                                     }
                                     ;
                                 });

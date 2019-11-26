@@ -82,4 +82,14 @@ public class SillyTest {
         assertEquals(76976,l);
     }
 
+
+
+    @Test
+    public void test18(){
+        List<Linje> linjer = map.get(18);
+
+        long l = new Silly().lagKvadrater(18, linjer);
+        assertEquals(766736,l);
+    }
+
 }
